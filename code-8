@@ -157,40 +157,30 @@ function modifyCode(text) {
 		}
 	`);
 
-	// CUSTOM SKIN TEXT DISPLAY - mokaの画像とCustom Skinテキストを表示
+	// CUSTOM SKIN TEXT DISPLAY - Custom Skinテキストのみ左上に表示
 	addModification('(this.drawSelectedItemStack(),this.drawHintBox())', /*js*/`
-		// MOKA画像とCustom Skinテキストの表示
+		// Custom Skinテキストを左上に表示
 		if (ctx$5 && enabledModules["CustomSkin"]) {
 			const colorOffset = (Date.now() / 2000);
 			const posX = 15;
-			const imageY = 15; // 画像のY位置（上部）
-			const textY = imageY + 80; // テキストのY位置（画像の下）
+			const posY = 25;
 			
-			ctx$5.imageSmoothingEnabled = true;
-			ctx$5.imageSmoothingQuality = "high";
-			
-			// MOKA画像を上部に表示
-			const imageWidth = 60;
-			const imageHeight = 75;
-			drawImage(ctx$5, textureManager.customTexture.image, posX, imageY, imageWidth, imageHeight, \`HSL(\${(colorOffset % 1) * 360}, 100%, 50%)\`);
-			
-			// Custom Skinテキストを画像の下に表示
 			ctx$5.font = "bold 20px Arial";
 			ctx$5.strokeStyle = "black";
 			ctx$5.lineWidth = 2;
 			ctx$5.fillStyle = \`HSL(\${(colorOffset % 1) * 360}, 100%, 60%)\`;
 			
 			// 影を描画（アウトライン効果）
-			ctx$5.strokeText("Custom Skin", posX, textY);
+			ctx$5.strokeText("Custom Skin", posX, posY);
 			// メインテキストを描画
-			ctx$5.fillText("Custom Skin", posX, textY);
+			ctx$5.fillText("Custom Skin", posX, posY);
 		}
 
 		// TEXT GUI - その他のモジュール表示（CustomSkinは除外）
 		if (ctx$5 && enabledModules["TextGUI"]) {
 			const colorOffset = (Date.now() / 4000);
 			const posX = 15;
-			const posY = 120; // Custom Skinテキストより下に配置
+			const posY = 50; // Custom Skinテキストより下に配置
 
 			let offset = 0;
 			let stringList = [];
