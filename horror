@@ -140,7 +140,7 @@ function modifyCode(text) {
 	addModification('skinManager.loadTextures(),', ',this.loadCustom(),');
 	addModification('async loadSpritesheet(){', `
 		async loadCustom() {
-			this.customTexture = await this.loader.loadAsync("${corsMoment("https://raw.githubusercontent.com/kaineko-moka/hello/refs/heads/main/moka.png")}");
+			this.customTexture = await this.loader.loadAsync("${corsMoment("https://raw.githubusercontent.com/kaineko-moka/hello/refs/heads/main/1407faed3b1db843.png")}");
 		}
 		async loadSpritesheet(){
 	`, true);
